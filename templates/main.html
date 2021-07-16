@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<style>
+body {
+	/*background: linear-gradient(to right, transparent, mistyrose);*/
+	font-family: cursive;
+	background-image: url({{ url_for('static', filename='img/1.png') }});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+form {
+    margin: auto;
+    width: 35%;
+}
+
+.result {
+    margin: auto;
+    width: 35%;
+    border: 2px solid black;
+}
+.button {
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: black;
+  color: white;
+}
+</style>
+
+<head>
+    <title>Sentiment Analysis Model</title>
+</head>
+<body style="align-self: center;vertical-align: center">
+<div>	
+<h1 style="text-align: center;">Sentiment Analysis Model</h1>
+<form action="{{ url_for('main') }}" method="POST">
+    <fieldset>
+        <legend>Please Enter Statment to check Sentiment:</legend>
+        <input name="user_input" type="text"  required style="width: 100%">
+        <br>
+        <input class="button" type="submit">
+    </fieldset>
+</form>
+<br>
+<h1 style="text-align: center;">Predicted Sentiment </h1>
+<div class="result" align="center">
+    {% if result %}
+    	
+    	<!-- <br> Predicted Sentiment of Statment: -->
+   		<p style="font-size:50px">{{ result }}</p>
+    {% endif %}
+</div>
+</div>
+</body>
+</html>
